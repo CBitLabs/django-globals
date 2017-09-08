@@ -15,6 +15,10 @@ class Global(object):
         if hasattr(globals, 'request'):
             return globals.request
 
+    @staticmethod
+    def get_user_from_request():
+        return getattr(Global.get_request(), 'user', None)
+
 # retrocompatibility
 class User(Global):
     def __init__(self, *args, **kwargs):
